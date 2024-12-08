@@ -1,4 +1,4 @@
-const version = "0.0.0.0";
+const version = "0.0.0.0";  // add "m" to version number *.*.*.*m if anything in here is modified
 
 require('dotenv').config();
 require('colors');
