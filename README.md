@@ -9,7 +9,7 @@ This node.js express server template is setup to be a ready to go with or withou
 > - **`cd`** to a folder for the project
 > - setup a .env file with the following:
 >   - SESSION_KEY = "your_key"
->   - NODE_ENV = 'development' OR 'producation'
+>   - NODE_ENV = 'development' OR 'production'
 > - run **`node server.js`**
 > - go to **`http://localhost:3000`**
 #### Docker
