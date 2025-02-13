@@ -2,7 +2,8 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config({ path: '../.env' }); // The .env file is outside the ./server.js folder root.
 require('colors');
 
 // Express setup

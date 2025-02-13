@@ -4,7 +4,7 @@ require('colors');
 
 // === .env Setup ===
 const dotenv = require('dotenv');
-dotenv.config({ path: './.env' }); // use if the .env file is outside the ./server.js folder root.
+dotenv.config({ path: '../.env' }); // The .env file is outside the ./server.js folder root.
 
 // === .env checking ===
 const requiredEnvVars = ['SESSION_KEY', 'NODE_ENV'];
