@@ -14,12 +14,12 @@ if (missingVars.length > 0) {
     process.exit(1);
     return;
 }
-if (process.env.NODE_ENV === 'development') {
-  console.log(`WARNING: Project in development`.yellow);
-}
 if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'development') { 
 	console.log("A .env file is needed with NODE_ENV = 'development' OR 'production'".red); 
 	process.exit(1); 
+}
+if (process.env.NODE_ENV === 'development') {
+  console.log(`WARNING: Project in development`.yellow);
 }
 
 // === Import app.js ===
