@@ -7,7 +7,7 @@ This node.js express server template is setup to be a ready to go with or withou
 > - [Install node](https://nodejs.org/en/download/package-manager)
 > - Download and extract [code](https://github.com/JacobMS2020/node-express-webserver-template.git)
 > - **`cd`** to a folder for the project
-> - setup a .env file with the following:
+> - setup a .env file in the root folder (not inside the node folder) with the following:
 >   - SESSION_KEY = "your_key"
 >   - NODE_ENV = 'development' OR 'production'
 > - run **`node server.js`**
