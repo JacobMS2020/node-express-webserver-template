@@ -16,8 +16,6 @@ app.set('views', path.join(__dirname, 'views'));
 // Middleware setup
 const logger = require('./src/middlewares/logger');
 app.use(logger);
-const errorHandler = require('./src/middlewares/errorHandler');
-app.use(errorHandler);
 
 // Setup session middleware
 app.use(session({
@@ -35,5 +33,9 @@ app.use(mainRoutes);
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'public/404.html'));
 });
+
+// Error handler should be the last middleware added.
+const errorHandler = require('./src/middlewares/errorHandler');
+app.use(errorHandler);
 
 module.exports = app;
