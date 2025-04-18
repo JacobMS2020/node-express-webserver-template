@@ -8,14 +8,15 @@ require('colors');
 
 // Express setup
 const app = express();
+
+// Logger setup
+const logger = require('./src/middlewares/logger');
+app.use(logger);
+
 app.use(express.static('public'));
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Middleware setup
-const logger = require('./src/middlewares/logger');
-app.use(logger);
 
 // Setup session middleware
 app.use(session({

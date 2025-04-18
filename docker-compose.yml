@@ -9,6 +9,7 @@ services:
     working_dir: /usr/src/app
     volumes:
       - ./node:/usr/src/app
+      - ./.env:/usr/src/app/../.env
     command: ["sh", "-c", "npm install && node server.js"]
 
 # You might like to add a depencancy like postgressql
