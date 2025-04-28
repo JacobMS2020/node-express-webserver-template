@@ -20,7 +20,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'icon.png')));
 // Set cache control for static files
 app.use(express.static('public', {
     setHeaders: (res, filePath) => {
-        res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+        res.setHeader('Cache-Control', 'no-store');
     }
 }));
 
