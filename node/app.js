@@ -5,6 +5,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config({ path: '../.env' }); // The .env file is outside the ./server.js folder root.
 require('colors');
+const favicon = require('serve-favicon');
 
 // Express setup
 const app = express();
@@ -13,7 +14,16 @@ const app = express();
 const logger = require('./src/middlewares/logger');
 app.use(logger);
 
-app.use(express.static('public'));
+// Serve favicon
+app.use(favicon(path.join(__dirname, 'public', 'images', 'icon.png')));
+
+// Set cache control for static files
+app.use(express.static('public', {
+    setHeaders: (res, filePath) => {
+        res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+    }
+}));
+
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));

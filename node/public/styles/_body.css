@@ -1,0 +1,14 @@
+/* Reset some basic elements for cross-browser consistency */
+html, body, div, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set default font and background color */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333; /* Dark gray text */
+    background-color: #f4f4f4; /* Light gray background */
+}
