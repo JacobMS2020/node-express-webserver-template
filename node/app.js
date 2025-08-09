@@ -1,17 +1,27 @@
 // Require
-const express = require('express');
-const session = require('express-session');
-const path = require('path');
-const dotenv = require('dotenv');
+
+import express from 'express';
+import session from 'express-session';
+import path from 'path';
+import dotenv from 'dotenv';
+import 'colors';
+import favicon from 'serve-favicon';
+import logger from './src/middlewares/logger.js';
+import mainRoutes from './src/routes/mainRoutes.js';
+import errorHandler from './src/middlewares/errorHandler.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// Define __dirname for ES modules
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 dotenv.config({ path: '../.env' }); // The .env file is outside the ./server.js folder root.
-require('colors');
-const favicon = require('serve-favicon');
 
 // Express setup
 const app = express();
 
 // Logger setup
-const logger = require('./src/middlewares/logger');
+
 app.use(logger);
 
 // Serve favicon
@@ -37,7 +47,7 @@ app.use(session({
 }));
 
 // Routes
-const mainRoutes = require('./src/routes/mainRoutes');
+
 app.use(mainRoutes);
 
 // Handle 404
@@ -46,7 +56,7 @@ app.use((req, res) => {
 });
 
 // Error handler should be the last middleware added.
-const errorHandler = require('./src/middlewares/errorHandler');
+
 app.use(errorHandler);
 
-module.exports = app;
+export default app;
