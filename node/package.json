@@ -1,7 +1,7 @@
 {
-  "name": "tetris",
+  "name": "",
   "version": "1.0.0",
-  "description": "Building Tetris in Javascript one block at a time!",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
