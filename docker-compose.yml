@@ -1,7 +1,7 @@
 services:
 # Node JS Express website
   node:
-    image: node:18-alpine
+    image: node:latest
     container_name: node-testing
     restart: unless-stopped
     ports:
