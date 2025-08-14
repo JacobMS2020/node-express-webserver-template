@@ -11,6 +11,7 @@ services:
       - ./node:/usr/src/app
       - ./.env:/usr/src/app/../.env
     command: ["sh", "-c", "npm install && node server.js"]
+    tty: true
 
 # You might like to add a depencancy like postgressql
 
