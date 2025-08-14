@@ -3,7 +3,6 @@
 import express from 'express';
 import session from 'express-session';
 import path from 'path';
-import dotenv from 'dotenv';
 import 'colors';
 import favicon from 'serve-favicon';
 import logger from './src/middlewares/logger.js';
@@ -14,8 +13,6 @@ import { dirname } from 'path';
 
 // Define __dirname for ES modules
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
-dotenv.config({ path: '../.env' }); // The .env file is outside the ./server.js folder root.
 
 // Express setup
 const app = express();
