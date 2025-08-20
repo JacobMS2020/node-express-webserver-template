@@ -16,7 +16,8 @@ app.set('views', path.join(__dirname, '../views'));
 app.use((req, res) => {
     res.status(500).render('error', {
         message: 'An error occurred starting the server. Please see server console logs for more details.',
-        title: 'Error'
+        title: 'Error',
+        button: false
     });
 });
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404</title>
+  <title><%= title ? title : "Something went wrong" %></title>
   <style>
     body {
       font-family: sans-serif;
@@ -53,13 +53,17 @@
 </head>
 <body>
   <div class="container">
+    <h1><%= title ? title : "Something went wrong" %></h1>
     <p>
-        <% if (message) { %>
-            <%= message %>
-        <% } else { %>
-            Looks like you are lost!
-        <% } %>
+      <% if (message) { %>
+          <%= message %>
+      <% } else { %>
+          Looks like you are lost!
+      <% } %>
     </p>
+    <% if (typeof button === 'undefined' || button !== false) { %>
+      <a href="/">Go back to the homepage</a>
+    <% } %>
 </div>
 
 </body>

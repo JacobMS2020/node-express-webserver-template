@@ -1,29 +1,18 @@
-/**
- * ====================
- * Import
- * ====================
-**/
-
-// Express
+// app.js
 import express from 'express';
 import session from 'express-session';
 import favicon from 'serve-favicon';
-import logger from './src/middlewares/logger.js';
-import errorHandler from './src/middlewares/errorHandler.js';
-// File system
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import 'colors';
+
+// Middlewares
+import logger from './src/middlewares/logger.js';
+import errorHandler from './src/middlewares/errorHandler.js';
+
 // Routes
 import mainRoutes from './src/routes/mainRoutes.js';
 import secureRoutes from './src/routes/secureRoutes.js';
-
-/**
- * ====================
- * App Setup
- * ====================
-**/
 
 // Define __dirname for ES modules
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -31,21 +20,29 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Express setup
 const app = express();
 
-// Logger setup
-
+// Logger
 app.use(logger);
 
 // Serve favicon
 app.use(favicon(path.join(__dirname, 'public', 'images', 'icon.png')));
 
-// Set cache control for static files
+// Insure the latest version of the public folder is served
 app.use(express.static('public', {
     setHeaders: (res, filePath) => {
-        res.setHeader('Cache-Control', 'no-store');
+        if (process.env.NODE_ENV === 'development') {
+            res.setHeader('Cache-Control', 'no-store');
+        } else {
+            // Allow caching in production for better performance
+            res.setHeader('Cache-Control', 'public, max-age=3600'); // 1 hour
+        }
     }
 }));
 
+// Body parsing
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// View engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -58,17 +55,18 @@ app.use(session({
 }));
 
 // Routes
-
 app.use(mainRoutes);
 app.use('/secure', secureRoutes);
 
 // Handle 404
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'public/404.html'));
+    res.status(404).render('error', {
+        title: '404',
+        message: 'Page not found. Looks like you are lost!'
+    });
 });
 
-// Error handler should be the last middleware added.
-
+// Error handler
 app.use(errorHandler);
 
 export default app;
