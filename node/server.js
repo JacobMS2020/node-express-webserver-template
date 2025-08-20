@@ -1,14 +1,23 @@
-const version = "1.0.0.0";
+import { checkEnv } from './config/env.js';
+import 'colors';
 
-// Load env FIRST (before any other imports)
-import './config/env.js';
+try {
+  checkEnv();
 
-// === Import app.js ===
-import app from './app.js';
+  const { default: app } = await import('./app.js');
+  
+  const PORT = process.env.EXPRESS_PORT || 3000;
 
-const PORT = process.env.EXPRESS_PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server Online`.green);
+    console.log(`App listening on port ${PORT}`.green);
+  });
 
-app.listen(PORT, () => {
-  console.log(`Server Version: ${version}`);
-  console.log(`App listening on port ${PORT}`.green);
-});
+} catch (error) {
+  console.error(`(server.js) Error loading environment variables: ${error.message}`.red);
+
+  const { default: errorServer } = await import('./config/errorServer.js');
+  errorServer.listen(process.env.EXPRESS_PORT || 3000, () => {
+    console.log(`Error server listening on port ${process.env.EXPRESS_PORT || 3000}`.red);
+  });
+}

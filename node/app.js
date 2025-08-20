@@ -1,15 +1,29 @@
-// Require
+/**
+ * ====================
+ * Import
+ * ====================
+**/
 
+// Express
 import express from 'express';
 import session from 'express-session';
-import path from 'path';
-import 'colors';
 import favicon from 'serve-favicon';
 import logger from './src/middlewares/logger.js';
-import mainRoutes from './src/routes/mainRoutes.js';
 import errorHandler from './src/middlewares/errorHandler.js';
-import { fileURLToPath } from 'url';
+// File system
+import path from 'path';
 import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import 'colors';
+// Routes
+import mainRoutes from './src/routes/mainRoutes.js';
+import secureRoutes from './src/routes/secureRoutes.js';
+
+/**
+ * ====================
+ * App Setup
+ * ====================
+**/
 
 // Define __dirname for ES modules
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -40,12 +54,13 @@ app.use(session({
     secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production' } // For HTTP, set to true for HTTPS
+    cookie: { secure: process.env.NODE_ENV === 'production' }
 }));
 
 // Routes
 
 app.use(mainRoutes);
+app.use('/secure', secureRoutes);
 
 // Handle 404
 app.use((req, res) => {

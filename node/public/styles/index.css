@@ -12,14 +12,25 @@ p {
     margin-bottom: 1em;
 }
 
-/* Basic link styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
 a {
-    color: #007bff; /* Bootstrap blue */
+    color: #007bff;
+    background-color: rgb(209, 209, 209);
     text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 
 a:hover {
-    text-decoration: underline;
+    background-color: rgb(176, 176, 176);
 }
 
 /* Basic container styling */
