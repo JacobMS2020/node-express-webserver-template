@@ -3,13 +3,14 @@
 
 /* Basic styling for headers */
 h1, h2, h3 {
-    margin-bottom: 1em;
+    text-align: center;
     color: #222; /* Slightly darker gray for headers */
 }
 
 /* Basic styling for paragraphs */
 p {
-    margin-bottom: 1em;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 ul {
@@ -35,8 +36,9 @@ a:hover {
 
 /* Basic container styling */
 .container {
-    width: 80%;
     margin: 0 auto;
+    margin-top: 20px;
+    width: 80%;
     padding: 20px;
     background-color: #fff; /* White background for container */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */

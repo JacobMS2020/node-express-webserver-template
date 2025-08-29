@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/index.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?t=<?php echo time(); ?>"> <!-- Cache busting -->
     <title></title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Welcome to the Node.js Express Webserver Template!</h1>
+        <h1><%= welcomeMSG %> to the Node.js Express Webserver Template!</h1>
         <p>This is a simple web server template built with Node.js and Express.</p>
         <p>Use the navigation links to explore different features.</p>
         <nav>

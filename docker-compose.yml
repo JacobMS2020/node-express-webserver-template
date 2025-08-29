@@ -2,7 +2,7 @@ services:
 # Node JS Express website
   node:
     image: node:latest
-    container_name: node-testing
+    container_name: node-express-template
     restart: unless-stopped
     ports:
       - "3000:3000"
