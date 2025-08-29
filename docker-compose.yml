@@ -17,6 +17,7 @@ services:
 
 networks:
   main-network:
+    external: true
 
 # You might like to add a depencancy like postgressql
 
