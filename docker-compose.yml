@@ -12,6 +12,11 @@ services:
       - ./.env:/usr/src/app/../.env
     command: ["sh", "-c", "npm install && node server.js"]
     tty: true
+    networks:
+      - main-network
+
+networks:
+  main-network:
 
 # You might like to add a depencancy like postgressql
 
