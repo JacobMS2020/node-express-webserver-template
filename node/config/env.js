@@ -1,3 +1,8 @@
+// ===============================================================
+// CHNAGE THIS IF YOU ADD MORE REQUIRED ENV VARS
+const requiredEnvVars = ['SESSION_KEY', 'NODE_ENV'];
+// ===============================================================
+
 // project_folder/node/config/env.js
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -7,11 +12,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load .env from project root
-dotenv.config({ path: path.join(__dirname, '../../.env') });
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 export function checkEnv() {
   // === .env checking ===
-  const requiredEnvVars = ['SESSION_KEY', 'NODE_ENV'];
   const missingVars = requiredEnvVars.filter(
     (key) => !process.env[key] || process.env[key].trim() === ''
   );
