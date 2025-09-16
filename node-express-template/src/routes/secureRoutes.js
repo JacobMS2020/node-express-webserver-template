@@ -1,3 +1,5 @@
+// http://host.tld/secure
+
 import express from 'express';
 
 const router = express.Router();

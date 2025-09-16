@@ -1,14 +1,13 @@
 services:
-# Node JS Express website
-  node:
-    image: node:latest
-    container_name: node-express-template
+  node-express-template: # <<< --------------------------- Changed service name
+    image: node:lts-alpine
+    container_name: node-express-template # <<< ---------- Changed container name
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3000:3000" # <<< -------------------------------- Changed port number                  
     working_dir: /usr/src/app
     volumes:
-      - ./node:/usr/src/app
+      - ./node-express-template:/usr/src/app # <<< ------- Changed volume path           
     command: ["sh", "-c", "npm install && node server.js"]
     tty: true
     networks:
