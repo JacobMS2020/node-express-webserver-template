@@ -12,7 +12,7 @@ import errorHandler from './src/middlewares/errorHandler.js';
 
 // Routes
 import mainRoutes from './src/routes/mainRoutes.js';
-import secureRoutes from './src/routes/secureRoutes.js';
+import adminRoutes from './src/routes/adminRoutes.js';
 
 // Define __dirname for ES modules
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -56,7 +56,7 @@ app.use(session({
 
 // Routes
 app.use(mainRoutes);
-app.use('/secure', secureRoutes);
+app.use('/admin', adminRoutes);
 
 // Handle 404
 app.use((req, res) => {

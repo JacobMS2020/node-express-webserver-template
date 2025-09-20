@@ -8,10 +8,10 @@ const router = express.Router();
 import { requireRole } from '../middlewares/checkPermissions.js';
 
 // Secure routes
-router.use(requireRole(['admin', 'user']));
+router.use(requireRole(['admin']));
 
 router.get('/', (req, res) => {
-    res.send('This is a secure route accessible to authenticated users.');
+    res.send('This is a secure route accessible to authenticated admins.');
 });
 
 // Export the router
