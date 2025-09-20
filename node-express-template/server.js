@@ -10,7 +10,7 @@ try {
 
   app.listen(PORT, () => {
     console.log(`Server Online`.green);
-    console.log(`App listening on port ${PORT}`.green);
+    console.log(`App listening on port ${PORT} (http://localhost:${PORT})`.green);
   });
 
 } catch (error) {
