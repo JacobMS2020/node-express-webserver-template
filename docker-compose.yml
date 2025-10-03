@@ -13,10 +13,6 @@ services:
     networks:
       - main-network
 
-networks:
-  main-network:
-    external: true
-
 # You might like to add a depencancy like postgressql
 
 #    depends_on:
@@ -38,3 +34,7 @@ networks:
 #      POSTGRES_DB: postgres
 #    volumes:
 #      - ./postgres_data:/var/lib/postgresql/data
+
+networks:
+  main-network:
+    external: true
