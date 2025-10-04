@@ -51,7 +51,7 @@ app.use(session({
     secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production' }
+    cookie: { secure: false } // So long as this aplication is behind a proxy (nginx, apache, etc)
 }));
 
 // Routes
