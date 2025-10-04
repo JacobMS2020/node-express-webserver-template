@@ -9,7 +9,6 @@ try {
   const PORT = process.env.EXPRESS_PORT || 3000;
 
   app.listen(PORT, () => {
-    console.log(`Server Online`.green);
     console.log(`App listening on port ${PORT} (http://localhost:${PORT})`.green);
   });
 
