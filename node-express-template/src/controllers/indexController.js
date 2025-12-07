@@ -8,5 +8,10 @@ export function indexGet(req, res) {
         welcomeMSG = "Welcome";
         req.session.active = true;
     }
-    return res.render('index', { welcomeMSG: welcomeMSG });
+
+    // Retrieve the IP address from the session
+    const ipAddress = req.session.ipAddress || 'Not logged (refresh the page)';
+    console.log(`IP Address from session: ${ipAddress}`);
+
+    return res.render('index', { welcomeMSG: welcomeMSG, ipAddress: ipAddress, version: global.version });
 }

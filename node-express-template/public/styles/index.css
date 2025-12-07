@@ -2,15 +2,23 @@
 @import url('_colors.css');
 
 /* Basic styling for headers */
-h1, h2, h3 {
+h1 {
     text-align: center;
     color: #222; /* Slightly darker gray for headers */
 }
 
+ h2, h3 {
+    color: #555; /* Dark gray for sub-headers */
+    margin: 20px 0px;
+ }
+
+ hr {
+    margin: 20px 0px;
+ }
+
 /* Basic styling for paragraphs */
 p {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 5px 0px;
 }
 
 ul {
@@ -70,5 +78,18 @@ input, textarea, select {
 
 textarea {
     resize: vertical;
+}
+
+@media screen and (max-width: 750px) {
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    p {
+        font-size: 14px;
+    }
+    
 }
 

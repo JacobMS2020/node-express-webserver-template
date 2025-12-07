@@ -50,8 +50,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(session({
     secret: process.env.SESSION_KEY,
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } // So long as this aplication is behind a proxy (nginx, apache, etc)
+    saveUninitialized: false,
+    cookie: { secure: false } // Set to true if behind a proxy and using HTTPS
 }));
 
 // Routes

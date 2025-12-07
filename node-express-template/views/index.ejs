@@ -11,16 +11,55 @@
 
 <body>
     <div class="container">
-        <h1><%= welcomeMSG %> to the Node.js Express Webserver Template!</h1>
+        <h1>
+            <%= welcomeMSG %> to the Node.js Express Webserver Template!
+        </h1>
+        <h2>About</h2>
+        <hr>
+        <p>Template Server Version: <%= version %></p>
         <p>This is a simple web server template built with Node.js and Express.</p>
-        <p>Use the navigation links to explore different features.</p>
+        <h2>Explore different features</h2>
+        <hr>
+        <p></p>
         <nav>
             <ul>
                 <li><a href="/admin">Go to Admin Area</a></li>
                 <li><a href="/test-error">Test Error Logging</a></li>
+                <li>
+                    <p><span style="font-weight: bolder;">Client IP Address: </span>
+                        <%= ipAddress %>
+                    </p>
+                </li>
             </ul>
         </nav>
     </div>
 </body>
+
+<script>
+    fetch('https://api.ipify.org?format=text')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(ip => {
+            console.log('IP Address:', ip);
+            fetch('/ip/logging', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ipAddress: ip })
+            })
+                .then(response => response.json())
+                .catch(error => {
+                    console.error('CLient stats logging error:', error);
+                });
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
+</script>
 
 </html>

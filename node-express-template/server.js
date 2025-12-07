@@ -1,5 +1,10 @@
+const version = 'v3.0-ip-2025.12.07';
+global.version = version; // Attach version to the global object
+
 import { checkEnv } from './config/env.js';
 import 'colors';
+
+console.log(`Server Version: ${version}`.green);
 
 try {
   checkEnv();
