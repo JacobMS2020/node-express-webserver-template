@@ -5,6 +5,7 @@ import favicon from 'serve-favicon';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+// Do not import modules here! -- (Go to the modules section below)
 
 // Middlewares
 import logger from './src/middlewares/logger.js';
@@ -53,6 +54,9 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false } // Set to true if behind a proxy and using HTTPS
 }));
+
+// MODULES SECTION //
+
 
 // Routes
 app.use(mainRoutes);

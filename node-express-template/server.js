@@ -1,4 +1,4 @@
-const version = 'v3.0-ip-2025.12.07';
+const version = 'v3.1-modules-2026.2.10';
 global.version = version; // Attach version to the global object
 
 import { checkEnv } from './config/env.js';
